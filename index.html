@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Турнир по волейболу</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: #0a0906;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 14px 14px 0 14px;
+    }
+
+    .page {
+      max-width: 460px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+      flex: 1;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.15rem;
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+      color: #ffffff;
+      margin-top: 10px;
+      animation: fadeUp 0.6s ease both;
+      word-break: break-word;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .text {
+      text-align: center;
+      max-width: 320px;
+      margin: 0 auto;
+      font-size: 1rem;
+      color: #ffffff;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      opacity: 0.6;
+      animation: fadeUpText 0.7s ease both;
+    }
+
+    .photo {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      animation: softScale 0.8s ease both;
+      margin-top: 4px;
+    }
+
+    .order {
+      width: 100%;
+      padding: 22px 18px;
+      border-radius: 28px;
+      background: rgba(18, 16, 12, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+      text-align: center;
+      animation: fadeUp 0.9s ease both;
+      margin-top: 4px;
+    }
+
+    .order h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      color: #ffffff;
+      letter-spacing: -0.2px;
+    }
+
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-radius: 16px;
+      padding: 15px 16px;
+      margin-bottom: 10px;
+      font-size: 0.98rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: background 0.25s, border-color 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.2px;
+    }
+
+    input:focus {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 134, 20, 0.5);
+      box-shadow: 0 0 0 3px rgba(255, 134, 20, 0.3);
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.55);
+      font-weight: 400;
+    }
+
+    .order-btn {
+      width: 100%;
+      border: none;
+      border-radius: 18px;
+      padding: 17px 18px;
+      font-weight: 800;
+      color: #ffffff;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      font-size: 1.05rem;
+      letter-spacing: 0.4px;
+      background: #FF8614;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: none;
+      margin-top: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .order-btn::before {
+      display: none;
+    }
+
+  .order-btn {
+  background: #C96A1B; /* было #FF8614 */
+}
+.order-btn:active {
+  background: #A85A16;
+}
+@media (hover: hover) {
+  .order-btn:hover {
+    background: #A85A16;
+  }
+}
+
+    .tg-icon {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      fill: #ffffff;
+    }
+
+    .footer-wrapper {
+      margin-top: auto;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 22px 0 18px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 500;
+      opacity: 0.5;
+      transition: opacity 0.25s, color 0.2s;
+      text-decoration: none;
+      color: #ffffff;
+      display: inline-block;
+      letter-spacing: 0.3px;
+    }
+
+    .footer:hover {
+      opacity: 0.85;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeUpText {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 0.8;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes softScale {
+      from {
+        opacity: 0;
+        transform: scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      .photo {
+        height: 220px;
+      }
+      .order-btn {
+        font-size: 0.98rem;
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="hero">
+
+      <h1>Молодёжный турнир  по волейболу!!!</h1>
+
+      <p class="text">
+        Добровольное пожертвование для участия - 500₽ 
+      </p>
+
+      <img class="photo" src="best.jpg" alt="Волейбольный турнир">
+
+      <div class="order">
+        <h2>Регистрация</h2>
+
+        <input id="area" placeholder="ФИО" autocomplete="name">
+        <input id="address" type="tel" inputmode="numeric" pattern="[0-9]*" placeholder="Номер телефона" oninput="this.value=this.value.replace(/[^0-9]/g,'')" maxlength="12">
+        <input id="phone" type="tel" inputmode="numeric" pattern="[0-9]*" placeholder="Возраст" oninput="this.value=this.value.replace(/[^0-9]/g,'')" maxlength="2">
+
+        <button class="order-btn" onclick="sendTelegram()">
+          <svg class="tg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.87 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.94z"/>
+          </svg>
+          Зарегистрироваться
+        </button>
+      </div>
+
+      <div class="footer-wrapper">
+        <a class="footer" href="https://t.me/SanyaDur" target="_blank" rel="noopener noreferrer">
+          тех. поддержка
+        </a>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    const telegramUsername = 'SanyaDur';
+
+    function getText() {
+      const area = document.getElementById('area').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+
+      if (!area || !address || !phone) {
+        alert('Пожалуйста, заполните все поля');
+        return null;
+      }
+
+      return `Здравствуйте! Я хочу зарегистрироваться на соревнования.\n\nФИО: ${area}\nТелефон: ${address}\nВозраст: ${phone}`;
+    }
+
+    function sendTelegram() {
+      const text = getText();
+      if (!text) return;
+      window.open(`https://t.me/${telegramUsername}?text=${encodeURIComponent(text)}`, '_blank');
+    }
+  </script>
+
+</body>
+</html> 
